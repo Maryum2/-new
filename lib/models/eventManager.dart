@@ -64,15 +64,15 @@ class EventManager {
     print(indexList1);
 
 
-    List<String> splitList2 = categories.split.sublist(categories.length);
-    List<String> indexList2 = [];
-
-    for (int i = 0; i < splitList2.length; i++) {
-      for (int y = 1; y < splitList2[i].length + 1; y++) {
-        indexList2.add(splitList2[i].substring(0, y).toLowerCase());
-      }
-    }
-    print(indexList2);
+//    List<String> splitList2 = categories.split.sublist(categories.length);
+//    List<String> indexList2 = [];
+//
+//    for (int i = 0; i < splitList2.length; i++) {
+//      for (int y = 1; y < splitList2[i].length + 1; y++) {
+//        indexList2.add(splitList2[i].substring(0, y).toLowerCase());
+//      }
+//    }
+//    print(indexList2);
 
 //    List<String> indexList2=[];
 //    int len = categories.length;
@@ -110,7 +110,7 @@ class EventManager {
       'Event_themes':themes,
       'SearchByOrgName': indexList,
       'SearchByArea': indexList1,
-      'SearchByCategory' : indexList2
+      //'SearchByCategory' : indexList2
 
     });
   }
