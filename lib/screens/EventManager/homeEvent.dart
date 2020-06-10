@@ -1,5 +1,3 @@
-
-import 'package:ajeeb/screens/EventManager/Nearest.dart';
 import 'package:ajeeb/screens/EventManager/ViewProfile.dart';
 //import 'package:ajeeb/screens/managerScreens/setProfile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -28,13 +26,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Icon cusIcon = Icon(Icons.search);
-  Icon cusIcon1 = Icon(Icons.search);
+  Icon cusIcon1=Icon(Icons.search);
   Widget cusSearchBar = Text("PENTA EVENTS");
   Widget cusSearchBar1 = Text("PENTA EVENTS");
   String searchString;
   String searchStringByArea;
   String searchStringByCategory;
-  int index = 0;
+  int index=0;
   final AuthService _auth = AuthService();
 
   navigateToDetail(DocumentSnapshot document) {
@@ -167,10 +165,11 @@ class _HomePageState extends State<HomePage> {
                   RaisedButton.icon(
                     onPressed: () {
                       //Navigator.of(context).pop();
-                      Navigator.push(
-                          context, MaterialPageRoute(builder: (context) {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
                         return GoToNearest();
                       }));
+
+
                     },
                     shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(15.0),
@@ -228,8 +227,7 @@ class _HomePageState extends State<HomePage> {
                               return Text('Error: ${snapshot.error}');
                             switch (snapshot.connectionState) {
                               case ConnectionState.waiting:
-                                return Center(
-                                    child: CircularProgressIndicator());
+                                return Center(child: CircularProgressIndicator());
 
                               default:
                                 return new ListView(
@@ -313,5 +311,305 @@ class _HomePageState extends State<HomePage> {
             ])));
   }
 
+//  Future<void> _nearest(BuildContext context){
+//
+//
+//
+//    var alertDialog = AlertDialog(
+//        title: Text("You are registered successfully!"),
+//        content: Text("Now press Okay for going to login screen or press cancel for going to main screen. "),
+//        actions: <Widget>[
+//          RaisedButton(
+//            shape: new RoundedRectangleBorder(
+//              borderRadius: new BorderRadius.circular(15.0),
+//            ),
+//            child: Text('Ok'),
+//            onPressed: () {
+//              Navigator.push(context, MaterialPageRoute(builder: (context) {
+//                return CustLogIn();
+//              }));
+//            },
+//            elevation: 10.0,
+//            color: Colors.teal,
+//          ),
+//          RaisedButton(
+//            shape: new RoundedRectangleBorder(
+//              borderRadius: new BorderRadius.circular(15.0),
+//            ),
+//            child: Text('Cancel'),
+//            onPressed: () {
+//              Navigator.push(context, MaterialPageRoute(builder: (context) {
+//                return MyHomePage();
+//              }));
+//            },
+//            elevation: 10.0,
+//            color: Colors.teal,
+//          )
+//        ]
+//    );
+//    //Navigator.of(context).pop();
+//    showDialog(
+//        context: context,
+//        builder: (BuildContext context) {
+//          return alertDialog;
+//        }
+//    );
+
+//    return showDialog(
+//        context: context,
+//        builder: (BuildContext context){
+//          final manager = Provider.of<EventManager>(context);
+//          return StreamBuilder<EventManager>(
+//              stream: EventManager(uid: manager.uid).managerdata,
+//              builder: (context, snapshot) {
+//                if(snapshot.hasData){
+//                  EventManager managerData=snapshot.data;
+//                  return AlertDialog(
+//                    shape: RoundedRectangleBorder(
+//                        borderRadius: BorderRadius.all(Radius.circular(10.0))
+//                    ),
+//                    backgroundColor: Colors.white,
+//                    title: Text(
+//                      "Description",
+//                      style: TextStyle(
+//                        fontWeight: FontWeight.bold,
+//                        fontStyle: FontStyle.italic,
+//                        fontSize: 25.0,
+//                      ),
+//                    ),
+//                    content: SingleChildScrollView(
+//                      child: Form(
+//                        key: _formKey,
+//                        child: ListBody(
+//                          children: <Widget>[
+//                            TextFormField(
+//                              initialValue: managerData.description,
+//                              //controller: _descriptionController,
+//                              //focusNode: _descriptionFocusNode,
+//                              autofocus: false,
+//                              maxLines: 8 ,
+//                              decoration: new InputDecoration(
+//
+//                                focusedBorder: OutlineInputBorder(
+//                                  borderRadius:
+//                                  BorderRadius.all(Radius.circular(1.0)),
+//                                  borderSide: BorderSide(
+//                                    color: Colors.teal,
+//                                    //Color of the border
+//                                    style: BorderStyle.solid,
+//                                    //Style of the border
+//                                    width: 2.5, //width of the border
+//                                  ),
+//                                ),
+//                                border: OutlineInputBorder(
+//                                  borderRadius: BorderRadius.circular(15.0),
+//                                ),
+//                              ),
+//
+//                              keyboardType: TextInputType.text,
+//                              textInputAction: TextInputAction.next,
+//                              validator: (val)=> val.isEmpty? 'Enter Description': null,
+//                              onChanged: (val){
+//                                setState(() => _description = val);
+//                              },
+//                            ),
+//                            SizedBox(height: 35.0),
+//                            RaisedButton(
+//                              //color: Colors.teal[400],
+//                                shape: new RoundedRectangleBorder(
+//                                  borderRadius: new BorderRadius.circular(15.0),
+//                                  side: BorderSide(
+//                                    color: Colors.teal, //Color of the border
+//                                    style: BorderStyle.solid, //Style of the border
+//                                    width: 2.0, //width of the border
+//                                  ),
+//                                ),
+//                                child: Text(
+//                                  'Upload',
+//                                  style: TextStyle(
+//                                      fontWeight: FontWeight.bold,
+//                                      fontSize: 25.0,
+//                                      color: Colors.white),
+//                                ),
+//                                elevation: 10.0,
+//                                //splashColor: Colors.black12,
+//                                color: Colors.teal,
+//                                onPressed: ()async {
+//                                  if(_formKey.currentState.validate()){
+//                                    await UploadDescription(_description ?? managerData.description);
+//                                    Navigator.of(context).pop();
+//                                  }
+//
+//
+//                                })
+//                          ],
+//                        ),
+//                      ),
+//                    ),
+//                  );
+//                }else{
+//                  return Loading();
+//                }
+//
+//              }
+//          );
+//        }
+//    );
 
 }
+
+
+//class Nearest extends StatefulWidget {
+//  @override
+//  State<StatefulWidget> createState() {
+//    // TODO: implement createState
+//    return _NearestState();
+//  }
+//}
+//
+//class _NearestState extends State<Nearest> {
+//  String searchStringByArea;
+////  Icon cusIcon = Icon(Icons.search);
+////  Widget cusSearchBar = Text("PENTA EVENTS");
+//
+//  navigateToDetail(DocumentSnapshot document) {
+//    Navigator.push(context, MaterialPageRoute(builder: (context) {
+//      return ProfilePage(document: document);
+//    }));
+//  }
+//
+//  @override
+//  Widget build(BuildContext context) {
+////    setState(() {
+////      if (this.cusIcon.icon == Icons.search) {
+////        this.cusIcon = Icon(Icons.arrow_back);
+////        this.cusSearchBar = TextField(
+////          onChanged: (value) {
+////            setState(() {
+////              searchStringByArea = value.toLowerCase();
+////            });
+////          },
+////          textInputAction: TextInputAction.go,
+////          decoration: InputDecoration(
+////            border: InputBorder.none,
+//////                      border: OutlineInputBorder(
+//////                          borderRadius: BorderRadius.all(Radius.circular(25.0))),
+////            hintText: "Search",
+////          ),
+////          style: TextStyle(
+////            color: Colors.white,
+////            fontSize: 16.0,
+////          ),
+////        );
+////      } else {
+////        this.cusIcon = Icon(Icons.search);
+////        this.cusSearchBar = Text("PENTA EVENTS");
+////      }
+////    });
+//    //icon: cusIcon,
+//    // TODO: implement build
+//    return Scaffold(
+//        body: Row(children: [
+//          Expanded(
+//              child: SizedBox(
+//                  height: 725.0,
+//                  child: StreamBuilder<QuerySnapshot>(
+//                    //if (snapshot.hasData)
+//                    stream: (searchStringByArea == null ||
+//                        searchStringByArea.trim() == "")
+//                    //||
+//                    // (searchStringByArea == null || searchStringByArea.trim() == "")
+//                        ? Firestore.instance.collection("Event_manager").snapshots()
+//                        : Firestore.instance
+//                        .collection("Event_manager")
+//                        .where("SearchByArea",
+//                        arrayContains: searchStringByArea)
+//                    //.where("SearchByArea", arrayContains: searchStringByArea)
+//                        .snapshots(),
+//                    // ignore: missing_return
+//                    builder: (context, snapshot) {
+//                      if (snapshot.hasError)
+//                        return Text('Error: ${snapshot.error}');
+//                      switch (snapshot.connectionState) {
+//                        case ConnectionState.waiting:
+//                          return Center(child: CircularProgressIndicator());
+//
+//                        default:
+//                          return new ListView(
+//                            physics: BouncingScrollPhysics(),
+//                            children: snapshot.data.documents
+//                                .map((DocumentSnapshot document) {
+//                              return new Column(children: <Widget>[
+//                                Card(
+//                                    elevation: 25.0,
+//                                    margin: new EdgeInsets.symmetric(
+//                                        horizontal: 10.0, vertical: 15.0),
+//                                    child: Container(
+//                                      //children: <Widget>[]
+//                                      height: 150.0,
+//
+////                                            aw2child: Column(
+////                                              children: <Widget>[
+//                                      //decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
+//                                      child: Stack(
+//                                        children: <Widget>[
+//                                          Row(
+//                                            children: <Widget>[
+//                                              Expanded(
+//                                                child: Container(
+//                                                  height: 500.0,
+//                                                  decoration: BoxDecoration(
+//                                                      image: DecorationImage(
+//                                                        fit: BoxFit.cover,
+//                                                        image:
+//                                                        new CachedNetworkImageProvider(
+//                                                          document['Event_Cover'],
+//                                                        ),
+//                                                      )),
+//                                                ),
+//                                              )
+//                                            ],
+//                                          ),
+//                                          ListTile(
+//                                            onTap: () {
+//                                              navigateToDetail(document);
+//                                            },
+//                                          ),
+//                                          Positioned(
+//                                            top: 60.0,
+//                                            child: Container(
+//                                              height: 80.0,
+//                                              width: 80.0,
+//                                              decoration: BoxDecoration(
+//                                                  shape: BoxShape.circle,
+//                                                  image: DecorationImage(
+//                                                    fit: BoxFit.fill,
+//                                                    image:
+//                                                    new CachedNetworkImageProvider(
+//                                                      document['Event_Logo'],
+//                                                    ),
+//                                                  ),
+//                                                  border: Border.all(
+//                                                      color: Colors.white,
+//                                                      width: 3.0)),
+//                                            ),
+//                                          ),
+//                                        ],
+//                                      ),
+////
+//                                    )),
+//                                Center(
+//                                    child: Text(document['Event_orgName'],
+//                                        style: TextStyle(
+//                                          color: Colors.teal,
+//                                          fontSize: 20.0,
+//                                        ))),
+//                              ]);
+//                            }).toList(),
+//                          );
+//                      }
+//                    },
+//                  )))
+//        ]));
+//  }
+//}

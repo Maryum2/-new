@@ -96,7 +96,7 @@ class _RegisterAsCustomerState extends State<RegisterAsCustomer> {
                   child: Column(children: <Widget>[
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.only(top: 100),
+                      margin: EdgeInsets.only(top: 200),
 //
 
                       child: Row(children: <Widget>[

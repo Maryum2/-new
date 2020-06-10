@@ -1,10 +1,15 @@
+import 'package:ajeeb/models/eventManager.dart';
+import 'package:ajeeb/models/user.dart';
 import 'package:ajeeb/screens/CustEvent.dart';
+import 'package:ajeeb/screens/Customer/homeCust.dart';
+import 'package:ajeeb/screens/EventManager/homeEvent.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 
-import '../main.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-//import 'package:flutter_fyp/main2.dart';
+
 void main() {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -12,132 +17,120 @@ void main() {
   ));
 }
 
-class MyWelcome extends StatelessWidget {
+class MyWelcome extends StatefulWidget {
+  @override
+  _MyWelcomeState createState() => _MyWelcomeState();
+}
+
+class _MyWelcomeState extends State<MyWelcome> {
+
+
+  @override
+
+  void initState(){
+    super.initState();
+    _mockCheckForSession().then(
+            (status) {
+
+          _navigateToHome();
+
+
+        });
+  }
+
+  Future<bool> _mockCheckForSession() async {
+    await Future.delayed(Duration(milliseconds: 4000), () {});
+    return true;
+
+  }
+
+
+  void _navigateToHome(){
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+            builder: (BuildContext context) => CustEvent()
+        )
+    );
+  }
+//  void _navigateToEvent(){
+//    Navigator.of(context).pushReplacement(
+//        MaterialPageRoute(
+//            builder: (BuildContext context) =>HomeEvent()
+//        )
+//    );
+//  }
+  void _navigateToCust(){
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+            builder: (BuildContext context) =>HomeCust()
+        )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+
+
     return MaterialApp(
 
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          body:
-          Container(
-              decoration: new BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/backgorund3.jpg')),
-              ),
-              child: new Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: 500.0,
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            body:
+            SingleChildScrollView(
+              child: Container(
+                  decoration: new BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/backgorund3.jpg')),
+                  ),
+                  child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 520.0,
 
-                      //width: 400.0,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage('assets/bgimg9.jpg'))),
-                    ),
-//                    new Image.asset("assets/bgimg.jpg"),
-                    Container(
-                      margin: EdgeInsets.all(100.0),
-                      // alignment:Alignment.bottomCenter,
-                      // margin:  EdgeInsets.all(4.0),
-                      height: 55.0,
-                      width: 200.0,
-
-                     child: RaisedButton(
-                        shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(15.0),
-
-                          side: BorderSide(
-                            color: Colors.white, //Color of the border
-                            style: BorderStyle.solid, //Style of the border
-                            width: 2.0, //width of the border
-                          ),
+                          //width: 400.0,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: AssetImage('assets/bgimg9.jpg'))),
                         ),
-                        textColor: Colors.white,
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) {
-                            return CustEvent();
-                          }));
-                        },
-                        child: Text("Welcome",
-                            style:TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25.0,
-                            )),
-                        elevation: 10.0,
-                        //splashColor: Colors.black12,
-                        color: Colors.teal,
-                      ),
+//                    new Image.asset("assets/bgimg.jpg"),
+                        Container(
+                            margin: EdgeInsets.all(50.0),
+                            alignment:Alignment.bottomCenter,
 
+                            height: 90.0,
+                            //width: 200.0,
 
+                            child:      Shimmer.fromColors(
+                              period: Duration(milliseconds: 1500),
+                              baseColor: Colors.teal,
+                              highlightColor: Colors.tealAccent,
+                              child: Container(
+                                padding: EdgeInsets.all(16.0),
+                                child: Text("PentaEvents",
+                                  style: TextStyle(
+                                      fontSize: 40.0,
+                                      fontFamily:'Pacifico',
+                                      shadows: <Shadow>[
+                                        Shadow(
+                                            blurRadius: 18.0,
+                                            color: Colors.black87,
+                                            offset: Offset.fromDirection(120, 12)
+                                        )
+                                      ]
+                                  ),
+                                ),
+                              ),
+                            )
+                        ),
+                      ]
+                  )
 
-                    ),
-            ]
-    )
-
-    )
-    )
+              ),
+            )
+        )
     );
   }
 }
-//
-
-
-
-
-
-//import 'package:flutter/material.dart';
-//
-//
-//import '../main.dart';
-////import 'package:flutter_fyp/main2.dart';
-//void main() {
-//  runApp(MaterialApp(
-//      debugShowCheckedModeBanner: false,
-//      home:MyWelcome()
-//  ));
-//}
-//
-//
-//class MyWelcome extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      body: ContentPage(),
-//    );
-//  }
-//}
-//
-//class ContentPage extends StatelessWidget {
-//  @override
-//  Widget build(BuildContext context) {
-//    return CarouselSlider(
-////      autoPlay: false,
-////      enableInfiniteScroll: false,
-////      initialPage: 0,
-////      viewportFraction: 1.0,
-////      aspectRatio: MediaQuery.of(context).size.aspectRatio,
-////      height: MediaQuery.of(context).size.height -30,
-//    //  height: MediaQuery.of(context).size.height,
-//      items: [1,2,3,,4,5].map((i){
-//        return Builder(
-//          builder:(BuildContext context){
-//            return Container(
-//              width: MediaQuery.of(context).size.width,
-//              margin: EdgeInsets.symmetric(horizontal: 5.0),
-//              decoration: BoxDecoration(
-//                color: Colors.amber
-//              ),
-//              child: Text('text $i', style: TextStyle(fontSize: 16.0),)
-//            );
-//          },
-//        );
-//    }).toList(), options: null,
-//
-//    );
-//  }
-//}
-//

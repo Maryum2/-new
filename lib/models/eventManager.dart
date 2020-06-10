@@ -110,7 +110,7 @@ class EventManager {
       'Event_themes':themes,
       'SearchByOrgName': indexList,
       'SearchByArea': indexList1,
-    //  'SearchByCategory' : indexList2
+      //  'SearchByCategory' : indexList2
 
     });
   }
@@ -124,23 +124,23 @@ class EventManager {
 //  manager data from snap shot
   EventManager _managerDataFromSnapshot(DocumentSnapshot snapshot) {
     return EventManager(
-      uid: uid,
-      email: snapshot.data['Event_email'],
-      password: snapshot.data['Event_password'],
-      username: snapshot.data['Event_name'],
-      cnic: snapshot.data['Event_cnic'],
-      phone: snapshot.data['Event_phone'],
-      address: snapshot.data['Event_address'],
-      orgName: snapshot.data['Event_orgName'],
-      servingAreas: snapshot.data['Event_serving_areas'],
-      cover: snapshot.data['Event_Cover'],
-      logo: snapshot.data['Event_Logo'],
-      description: snapshot.data['Description'],
-      services:snapshot.data['Event_services'],
-      categories: snapshot.data['Event_categories'],
-      themes: snapshot.data['Event_themes'],
-      portfolio: snapshot.data['Event_portfolio'],
-      customers: snapshot.data['Event_customers']
+        uid: uid,
+        email: snapshot.data['Event_email'],
+        password: snapshot.data['Event_password'],
+        username: snapshot.data['Event_name'],
+        cnic: snapshot.data['Event_cnic'],
+        phone: snapshot.data['Event_phone'],
+        address: snapshot.data['Event_address'],
+        orgName: snapshot.data['Event_orgName'],
+        servingAreas: snapshot.data['Event_serving_areas'],
+        cover: snapshot.data['Event_Cover'],
+        logo: snapshot.data['Event_Logo'],
+        description: snapshot.data['Description'],
+        services:snapshot.data['Event_services'],
+        categories: snapshot.data['Event_categories'],
+        themes: snapshot.data['Event_themes'],
+        portfolio: snapshot.data['Event_portfolio'],
+        customers: snapshot.data['Event_customers']
 
 
 
@@ -148,7 +148,7 @@ class EventManager {
     );
   }
   // get manager doc stream
-    Stream<EventManager> get managerdata{
+  Stream<EventManager> get managerdata{
     return managerCollection.document(uid).snapshots().map(_managerDataFromSnapshot);
   }
 
@@ -177,7 +177,6 @@ class EventManager {
 //    Firestore.instance.collection('Event_manager').document(user.uid).setData(data)
 //
 //  }
-
 
 
 
