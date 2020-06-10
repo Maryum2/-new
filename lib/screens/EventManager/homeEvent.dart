@@ -784,7 +784,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ajeeb/screens/Customer/ViewListTileProfile.dart';
 import 'package:ajeeb/services/auth.dart';
-//import 'package:ajeeb/screens/managerScreens/Nearest.dart';
+import 'package:ajeeb/screens/EventManager/Nearest.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MaterialApp(
@@ -963,21 +963,21 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.white,
                         )),
                   ),
-                  RaisedButton.icon(
-                    onPressed: () {},
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(15.0),
-                    ),
-                    color: Colors.teal,
-                    icon: Icon(
-                      Icons.format_align_justify,
-                      color: Colors.white,
-                    ),
-                    label: Text('Categories',
-                        style: TextStyle(
-                          color: Colors.white,
-                        )),
-                  ),
+//                  RaisedButton.icon(
+//                    onPressed: () {},
+//                    shape: new RoundedRectangleBorder(
+//                      borderRadius: new BorderRadius.circular(15.0),
+//                    ),
+//                    color: Colors.teal,
+//                    icon: Icon(
+//                      Icons.format_align_justify,
+//                      color: Colors.white,
+//                    ),
+//                    label: Text('Categories',
+//                        style: TextStyle(
+//                          color: Colors.white,
+//                        )),
+//                  ),
                 ],
               ),
 

@@ -64,7 +64,7 @@ class EventManager {
     print(indexList1);
 
 
-//    List<String> splitList2 = categories.split.sublist(categories.length);
+//    List<String> splitList2 = categories.cast().asMap();
 //    List<String> indexList2 = [];
 //
 //    for (int i = 0; i < splitList2.length; i++) {
@@ -110,7 +110,7 @@ class EventManager {
       'Event_themes':themes,
       'SearchByOrgName': indexList,
       'SearchByArea': indexList1,
-      //'SearchByCategory' : indexList2
+    //  'SearchByCategory' : indexList2
 
     });
   }
