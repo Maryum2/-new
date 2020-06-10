@@ -25,6 +25,7 @@ dependencies:
   email_validator: '^1.0.0'
   fluttertoast: ^4.0.1
   image_picker: ^0.6.4
+  carousel_slider: ^2.1.0
 
   cached_network_image: ^2.2.0
   firebase_storage:
