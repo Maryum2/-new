@@ -1,45 +1,134 @@
-import 'package:ajeeb/screens/EventManager/ViewProfile.dart';
-//import 'package:ajeeb/screens/managerScreens/setProfile.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:ajeeb/screens/Customer/ViewListTileProfile.dart';
+// ignore: avoid_web_libraries_in_flutter
+//import 'dart:html';
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:ajeeb/services/auth.dart';
-import 'package:ajeeb/screens/EventManager/Nearest.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:image_picker/image_picker.dart';
 
-void main() => runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'AppBar Scaffold',
-    theme: ThemeData(
-      primarySwatch: Colors.teal,
-    ),
-    home: HomeCust()));
+//class Home extends StatefulWidget {
 
 class HomeCust extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return _HomeCustState();
-  }
+  _HomeCust createState() => _HomeCust();
 }
 
-class _HomeCustState extends State<HomeCust> {
-  Icon cusIcon = Icon(Icons.search);
-  Icon cusIcon1 = Icon(Icons.search);
-  Widget cusSearchBar = Text("PENTA EVENTS");
-  Widget cusSearchBar1 = Text("PENTA EVENTS");
-  String searchString;
-  String searchStringByArea;
-  String searchStringByCategory;
-  int index = 0;
+class _HomeCust extends State<HomeCust> {
+
+
+//  File imageFile;
+////  File _image;
+////  String _uploadedFileURL;
+//  _openGallery(BuildContext context) async {
+//    var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
+//    this.setState(() {
+//      imageFile = picture ;
+//    });
+//    Navigator.of(context).pop();
+//  }
+//
+//  _openCamera(BuildContext context) async {
+//    var picture = await ImagePicker.pickImage(source: ImageSource.camera);
+//    this.setState(() {
+//      imageFile = picture;
+//    });
+//    Navigator.of(context).pop();
+//  }
+//
+//  Future<void> _showDialog(BuildContext context) {
+//    return showDialog(
+//        context: context,
+//        builder: (BuildContext context) {
+//          return AlertDialog(
+//            shape: RoundedRectangleBorder(
+//                borderRadius: BorderRadius.all(Radius.circular(10.0))
+//            ),
+//            backgroundColor: Colors.grey,
+//            // contentPadding: EdgeInsets.all(10.0),
+//            title: Text(
+//              "Make a Choice!",
+//              style: TextStyle(
+//                fontWeight: FontWeight.bold,
+//                fontStyle: FontStyle.italic,
+//                fontSize: 25.0,
+//              ),
+//            ),
+//            content: SingleChildScrollView(
+//                child: ListBody(
+//                    children: <Widget>[
+//                      GestureDetector(
+//
+//                        child: Text("Gallery"),
+//                        onTap: () {
+//                          _openGallery(context);
+//                        },
+//                      ),
+//                      Padding(padding: EdgeInsets.all(15.0)),
+//                      GestureDetector(
+//                        child: Text("Camera"),
+//                        onTap: () {
+//                          _openCamera(context);
+//                        },
+//                      ),
+//                    ])),
+//          );
+//        });
+//  }
+//
+//  Widget _decideImageView() {
+//    // ignore: unrelated_type_equality_checks
+//    if (imageFile == null) {
+//      return Container(
+//        height: 95.0,
+//        width: 95.0,
+//        decoration: BoxDecoration(
+//            shape: BoxShape.circle,
+//            image: DecorationImage(
+//              fit: BoxFit.fill,
+//              image: AssetImage('assets/noimg.jpg'),
+////              fit: 400,
+////              height: 400,
+//              //Image.file(imageFile,width:400 ,height:400);
+//            ),
+//            border: Border.all(color: Colors.white, width: 3.0)),
+//      );
+//    } else {
+//      return Container(
+//        height: 95.0,
+//        width: 95.0,
+//        decoration: BoxDecoration(
+//            shape: BoxShape.circle,
+//            image: DecorationImage(
+//                fit: BoxFit.fill,
+//                image: FileImage(this.imageFile)
+//              //image: Image.file(imageFile),
+//            ),
+//            border: Border.all(color: Colors.white, width: 3.0)),
+//      );
+//
+//      //Image.file(imageFile,width:400 ,height:400);
+//
+//    }
+//  }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
   final AuthService _auth = AuthService();
 
-  navigateToDetail(DocumentSnapshot document) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return ProfilePage(document: document);
-    }));
-  }
+//
+
+  Icon cusIcon = Icon(Icons.search);
+  Widget cusSearchBar = Text("PENTA EVENTS");
 
   @override
   Widget build(BuildContext context) {
@@ -55,19 +144,15 @@ class _HomeCustState extends State<HomeCust> {
                   if (this.cusIcon.icon == Icons.search) {
                     this.cusIcon = Icon(Icons.arrow_back);
                     this.cusSearchBar = TextField(
-                      onChanged: (value) {
-                        setState(() {
-                          searchString = value.toLowerCase();
-                          //searchStringByArea= value.toLowerCase();
-                        });
-                      },
                       textInputAction: TextInputAction.go,
                       decoration: InputDecoration(
+
                         border: InputBorder.none,
 //                      border: OutlineInputBorder(
 //                          borderRadius: BorderRadius.all(Radius.circular(25.0))),
                         hintText: "Search",
                       ),
+
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16.0,
@@ -84,6 +169,7 @@ class _HomeCustState extends State<HomeCust> {
           ],
           title: cusSearchBar,
         ),
+
         drawer: new Drawer(
             child: new ListView(children: <Widget>[
               new UserAccountsDrawerHeader(
@@ -98,211 +184,170 @@ class _HomeCustState extends State<HomeCust> {
               new ListTile(
                 leading: Icon(Icons.phone_in_talk),
                 title: new Text("Contact us"),
-                onTap: () {
-//                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-//                    return Contact();
-//                  }));
-                },
+//      onTap: () {
+//      Navigator.push(context, MaterialPageRoute(builder: (context) {
+//      return Contact();
+//      }));
+//      },
               ),
               new ListTile(
                 leading: Icon(Icons.people),
                 title: new Text("About us"),
-                onTap: () {
-//                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-//                    return About();
-//                  }));
-                },
+//      onTap: () {
+//      Navigator.push(context, MaterialPageRoute(builder: (context) {
+//      return About();
+//      }));
+//      },
               ),
               new ListTile(
                 leading: Icon(Icons.comment),
                 title: new Text("Reviews"),
-                onTap: () {
-//                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-//                    return AddReview();
-//                  }));
-                },
+//      onTap: () {
+//      Navigator.push(context, MaterialPageRoute(builder: (context) {
+//      return AddReview();
+//      }));
+//      },
               ),
-
               new ListTile(
                 leading: Icon(Icons.star),
                 title: new Text("Ratings"),
-                onTap: () {
-//                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-//                    return Rate();
-//                  }));
-                },
+//      onTap: () {
+//      Navigator.push(context, MaterialPageRoute(builder: (context) {
+//      return Rate();
+//      }));
+//      },
               ),
 
+//
               new ListTile(
                 leading: Icon(Icons.edit),
                 title: new Text("Edit Credentials"),
-                onTap: () {
-//                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-//                    return EditCredentials();
-//                  }));
-                },
+//      onTap: () {
+//      Navigator.push(context, MaterialPageRoute(builder: (context) {
+//      return EditCredentials();
+//      }));
+//      },
               ),
               new ListTile(
-                  leading: Icon(Icons.lock),
-                  title: new Text("Logout"),
-                  onTap: () async {
-                    await _auth.signOut();
-                  }),
-            ])),
-        body: SingleChildScrollView(
-            child: Column(children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  RaisedButton.icon(
-                    onPressed: () {
-                      //Navigator.of(context).pop();
-                      Navigator.push(
-                          context, MaterialPageRoute(builder: (context) {
-                        return GoToNearest();
-                      }));
-                    },
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(15.0),
-                    ),
-                    color: Colors.teal,
-                    icon: Icon(
-                      Icons.directions_run,
-                      color: Colors.white,
-                    ),
-                    label: Text('Nearest',
-                        style: TextStyle(
-                          color: Colors.white,
-                        )),
-                  ),
-//                  RaisedButton.icon(
-//                    onPressed: () {},
-//                    shape: new RoundedRectangleBorder(
-//                      borderRadius: new BorderRadius.circular(15.0),
-//                    ),
-//                    color: Colors.teal,
-//                    icon: Icon(
-//                      Icons.format_align_justify,
-//                      color: Colors.white,
-//                    ),
-//                    label: Text('Categories',
-//                        style: TextStyle(
-//                          color: Colors.white,
-//                        )),
-//                  ),
-                ],
+                leading: Icon(Icons.lock),
+                title: new Text("Logout"),
+                onTap: () async {
+                  await _auth.signOut();
+                },
+//      onTap: () {
+//      Navigator.push(context, MaterialPageRoute(builder: (context) {
+//      return CustLogIn();
+//      }));
+//      },
               ),
+            ])),
 
-              Row(children: [
-                Expanded(
-                    child: SizedBox(
-                        height: 725.0,
-                        child: StreamBuilder<QuerySnapshot>(
-                          //if (snapshot.hasData)
-                          stream: (searchString == null ||
-                              searchString.trim() == "")
-                          //||
-                          // (searchStringByArea == null || searchStringByArea.trim() == "")
-                              ? Firestore.instance
-                              .collection("Event_manager")
-                              .snapshots()
-                              : Firestore.instance
-                              .collection("Event_manager")
-                              .where("SearchByOrgName",
-                              arrayContains: searchString)
-                          //.where("SearchByArea", arrayContains: searchStringByArea)
-                              .snapshots(),
-                          // ignore: missing_return
-                          builder: (context, snapshot) {
-                            if (snapshot.hasError)
-                              return Text('Error: ${snapshot.error}');
-                            switch (snapshot.connectionState) {
-                              case ConnectionState.waiting:
-                                return Center(
-                                    child: CircularProgressIndicator());
+        body: Container(
+          decoration: new BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('assets/des.jpg')),
+          ),
 
-                              default:
-                                return new ListView(
-                                  physics: BouncingScrollPhysics(),
-                                  children: snapshot.data.documents
-                                      .map((DocumentSnapshot document) {
-                                    return new Column(children: <Widget>[
-                                      Card(
-                                          elevation: 25.0,
-                                          margin: new EdgeInsets.symmetric(
-                                              horizontal: 10.0, vertical: 15.0),
-                                          child: Container(
-                                            //children: <Widget>[]
-                                            height: 150.0,
 
-//                                            aw2child: Column(
-//                                              children: <Widget>[
-                                            //decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
-                                            child: Stack(
-                                              children: <Widget>[
-                                                Row(
-                                                  children: <Widget>[
-                                                    Expanded(
-                                                      child: Container(
-                                                        height: 500.0,
-                                                        decoration: BoxDecoration(
-                                                            image: DecorationImage(
-                                                              fit: BoxFit.cover,
-                                                              image:
-                                                              new CachedNetworkImageProvider(
-                                                                document['Event_Cover'],
-                                                              ),
-                                                            )),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                ListTile(
-                                                  onTap: () {
-                                                    navigateToDetail(document);
-                                                  },
-                                                ),
-                                                Positioned(
-                                                  top: 60.0,
-                                                  child: Container(
-                                                    height: 80.0,
-                                                    width: 80.0,
-                                                    decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        image: DecorationImage(
-                                                          fit: BoxFit.fill,
-                                                          image:
-                                                          new CachedNetworkImageProvider(
-                                                            document['Event_Logo'],
-                                                          ),
-                                                        ),
-                                                        border: Border.all(
-                                                            color: Colors.white,
-                                                            width: 3.0)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
+
+
+
+
+
+//  @override
+//  Widget build(BuildContext context) {
+//    return Container(
+//        child: Scaffold(
+//          backgroundColor: Colors.teal[50],
+//          appBar: AppBar(
+//            title: Text('Penta Events'),
+//            backgroundColor: Colors.teal[400],
+//            elevation: 0.0,
+//            actions: <Widget>[
+//            FlatButton.icon(
+//              icon: Icon(Icons.person),
+//              label: Text('logout'),
+//              onPressed: () async {
+//                await _auth.signOut();
+//              },
+//            ),
 //
-                                          )),
-                                      Center(
-                                          child: Text(document['Event_orgName'],
-                                              style: TextStyle(
-                                                color: Colors.teal,
-                                                fontSize: 20.0,
-                                              ))),
-                                    ]);
-                                  }).toList(),
-                                );
-                            }
-                          },
-                        )))
-
-
-              ])
-            ])));
+//
+//            ],
+        )
+    );
   }
 }
+
+
+//              body: Swiper(
+//                itemCount: 3,
+//                itemBuilder: (BuildContext context,int index){
+//                  return Row(
+//                    children: <Widget>[
+//                      Expanded(
+//                          child: Stack(children: <Widget>[
+//                            _decideImageView(),
+//                            IconButton(
+//                              icon: Icon(Icons.edit),
+//                              color: Colors.white,
+//                              onPressed: () {
+//                                _showDialog(context);
+//                              },
+//                            )
+//                          ]))
+//                    ],
+//                  );
+//                },
+//                viewportFraction: 0.8,
+//                 scale: 0.9,
+//                control: SwiperControl(),
+//                pagination: SwiperPagination(),
+//                itemHeight: 300.0,
+//                itemWidth: 300.0,
+//                layout: SwiperLayout.CUSTOM,
+//                customLayoutOption: CustomLayoutOption(startIndex : -1,
+//                stateCount: 3).addRotate([-45.0 /100 ,0.0,45.0/100]).addTranslate([
+//                  Offset(-370.0 ,-40.0),
+//                  Offset(0.0,0.0),
+//                  Offset(370.0,-40.0)
+//                ]),
+//              )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -162,51 +162,53 @@ class _PortfolioState extends State<Portfolio> {
         elevation: 0.0,
       ),
       body:
-      Container(
-        decoration: new BoxDecoration(
-          image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage('assets/backgorund3.jpg')),
-        ),
-        child: Column(
-          children: <Widget>[
+      SingleChildScrollView(
+        child: Container(
+          decoration: new BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('assets/backgorund3.jpg')),
+          ),
+          child: Column(
+            children: <Widget>[
 
-            sampleImage == null ?
-            Column(
-              children: <Widget>[
-                SizedBox(height: 300,),
-                new Center(
-                  child: Text('Select an image'),
-                ),
-                SizedBox(height: 265,),
-                RaisedButton(
-                  //color: Colors.teal[400],
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(15.0),
-                      side: BorderSide(
-                        color: Colors.teal, //Color of the border
-                        style: BorderStyle.solid, //Style of the border
-                        width: 1.0, //width of the border
+              sampleImage == null ?
+              Column(
+                children: <Widget>[
+                  SizedBox(height: 300,),
+                  new Center(
+                    child: Text('Select an image'),
+                  ),
+                  SizedBox(height: 265,),
+                  RaisedButton(
+                    //color: Colors.teal[400],
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(15.0),
+                        side: BorderSide(
+                          color: Colors.teal, //Color of the border
+                          style: BorderStyle.solid, //Style of the border
+                          width: 1.0, //width of the border
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      'Select',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                          color: Colors.white),
-                    ),
-                    elevation: 20.0,
-                    //splashColor: Colors.black12,
-                    color: Colors.teal,
-                    onPressed: () {
-                      _showDialog1(context);
-                    }),
+                      child: Text(
+                        'Select',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            color: Colors.white),
+                      ),
+                      elevation: 20.0,
+                      //splashColor: Colors.black12,
+                      color: Colors.teal,
+                      onPressed: () {
+                        _showDialog1(context);
+                      }),
 
-              ],
-            )
-                : enableUpload()
-          ],
+                ],
+              )
+                  : enableUpload()
+            ],
+          ),
         ),
       ),
     );

@@ -117,7 +117,7 @@ class _RegisterAsEventManagerState extends State<RegisterAsEventManager> {
               child: Container(
                 decoration: new BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.cover, image: AssetImage('assets/background3.jpg')),
+                      fit: BoxFit.cover, image: AssetImage('assets/backgorund3.jpg')),
                 ),
                 child: Form(
                   key: _formKey,
@@ -125,7 +125,7 @@ class _RegisterAsEventManagerState extends State<RegisterAsEventManager> {
                   child: Column(children: <Widget>[
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.only(top: 200),
+                      margin: EdgeInsets.only(top: 100),
 //
 
                       child: Row(children: <Widget>[
@@ -325,7 +325,7 @@ class _RegisterAsEventManagerState extends State<RegisterAsEventManager> {
                                 textInputAction: TextInputAction.next,
                                 validator: (val) {
                                   //Pattern pattern = r'^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$';
-                                  Pattern pattern = r'^[a-z0-9_-]{3,15}$';
+                                  Pattern pattern = r'^[a-zA-Z0-9_-]{3,15}$';
                                   RegExp regex = new RegExp(pattern);
                                   if (val.isEmpty) {
                                     return 'Please enter Organization Name';
