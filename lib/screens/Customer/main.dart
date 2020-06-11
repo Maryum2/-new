@@ -1,4 +1,4 @@
-import 'file:///C:/Users/zicomputers/StudioProjects/-new/lib/screens/Customer/wrapper.dart';
+import 'package:ajeeb/screens/Customer/wrapper.dart';
 import 'package:ajeeb/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,12 +1,24 @@
 
 import 'package:ajeeb/authenticate/register_as_customer.dart';
 import 'package:ajeeb/authenticate/register_as_event_manager.dart';
+import 'package:ajeeb/screens/CustEvent.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ajeeb/services/auth.dart';
 import 'package:ajeeb/shared/constants.dart';
 import 'package:ajeeb/shared/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+
+
+
+
+
+
+
+void main() {
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: SignInEvent()));
+}
+
 
 class SignInEvent extends StatefulWidget {
   final Function toggleView;
@@ -34,6 +46,7 @@ class _SignInEventState extends State<SignInEvent> {
     return loading
         ? Loading()
         : Scaffold(
+        resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.teal[400],
@@ -45,8 +58,18 @@ class _SignInEventState extends State<SignInEvent> {
 //              },
 //              icon: Icon(Icons.arrow_back),
 //            )
+          leading: IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return CustEvent();
+              }));
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
         ),
-        body: Container(
+        body:
+
+         Container(
           decoration: new BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover, image: AssetImage('assets/backgorund3.jpg')),
@@ -177,6 +200,43 @@ class _SignInEventState extends State<SignInEvent> {
                       style:
                       TextStyle(color: Colors.black, fontSize: 14.0),
                     ),
+//                    Align(
+//                        alignment: Alignment.bottomCenter,
+//                        child: Container(
+//                            margin: EdgeInsets.all(2.0),
+//                            height: 25.0,
+//                            width: 200.0,
+//                            child: Column(
+//                                children: <Widget>[
+//                                  Text('Dont have an account?',
+//                                    style: TextStyle(
+//                                        fontWeight: FontWeight.bold,
+//                                        fontSize: 20.0,
+//                                        color: Colors.teal),
+//                                  ),
+//                                  RaisedButton(
+//                                    onPressed: () {
+//                                      widget.toggleView();
+//                                      //SignUpAs(context);
+//                                    },
+//                                    color: Colors.teal,
+//                                    shape: new RoundedRectangleBorder(
+//                                      borderRadius: new BorderRadius.circular(15.0),
+//                                    ),
+//                                    textColor: Colors.white,
+//                                    child: const Text('Sign Up!',
+//                                      style: TextStyle(
+//                                          fontWeight: FontWeight.bold,
+//                                          fontSize: 20.0,
+//                                          color: Colors.white),
+//                                    ),
+//                                    elevation: 10.0,
+//
+//
+//                                  ),
+//                                ]))
+//                    ),
+
                     Align(
                         alignment: Alignment.bottomCenter,
                         child: Container(
@@ -192,7 +252,8 @@ class _SignInEventState extends State<SignInEvent> {
                               borderRadius: new BorderRadius.circular(15.0),
                             ),
                             textColor: Colors.white,
-                            child: const Text('Dont have an account? Sign Up!',
+                            child: const Text('Dont have an account? '
+                                           'Sign Up!',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
@@ -211,7 +272,7 @@ class _SignInEventState extends State<SignInEvent> {
             ),
           ),
         )
-    );
+        );
 
   }
 }

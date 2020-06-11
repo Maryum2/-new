@@ -1,9 +1,24 @@
 
+import 'package:ajeeb/screens/CustEvent.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ajeeb/services/auth.dart';
 
 import 'package:ajeeb/shared/loading.dart';
 import 'package:flutter/material.dart';
+
+
+
+
+
+
+
+void main() {
+
+  runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SignIn()));
+}
+
 
 
 class SignIn extends StatefulWidget {
@@ -32,6 +47,7 @@ class _SignInState extends State<SignIn> {
     return loading
         ? Loading()
         : Scaffold(
+        resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.teal[400],
@@ -43,8 +59,19 @@ class _SignInState extends State<SignIn> {
 //              },
 //              icon: Icon(Icons.arrow_back),
 //            )
+          leading: IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return CustEvent();
+              }));
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
         ),
-        body: Container(
+        body:SingleChildScrollView(
+
+
+        child: Container(
           decoration: new BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover, image: AssetImage('assets/backgorund3.jpg')),
@@ -176,6 +203,9 @@ class _SignInState extends State<SignIn> {
                       style:
                       TextStyle(color: Colors.black, fontSize: 14.0),
                     ),
+
+
+
                     Align(
                         alignment: Alignment.bottomCenter,
                         child: Container(
@@ -185,14 +215,14 @@ class _SignInState extends State<SignIn> {
                           child: RaisedButton(
                             onPressed: () {
                               widget.toggleView1();
-                              //SignUpAs(context);
                             },
                             color: Colors.teal,
                             shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(15.0),
                             ),
                             textColor: Colors.white,
-                            child: const Text('Dont have an account? Sign Up!',
+                            child: const Text('Dont have an account? '
+                                'Sign Up!',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
@@ -205,13 +235,50 @@ class _SignInState extends State<SignIn> {
                         )
                     ),
 
+//                    Align(
+//                        alignment: Alignment.bottomCenter,
+//                        child: Container(
+//                          margin: EdgeInsets.all(2.0),
+//                          height: 25.0,
+//                          width: 200.0,
+//                          child: Column(
+//                              children: <Widget>[
+//                                Text('Dont have an account?',
+//                          style: TextStyle(
+//                              fontWeight: FontWeight.bold,
+//                              fontSize: 20.0,
+//                              color: Colors.teal),
+//                          ),
+//                           RaisedButton(
+//                            onPressed: () {
+//                              widget.toggleView1();
+//                              //SignUpAs(context);
+//                            },
+//                            color: Colors.teal,
+//                            shape: new RoundedRectangleBorder(
+//                              borderRadius: new BorderRadius.circular(15.0),
+//                            ),
+//                            textColor: Colors.white,
+//                            child: const Text('Sign Up!',
+//                              style: TextStyle(
+//                                  fontWeight: FontWeight.bold,
+//                                  fontSize: 20.0,
+//                                  color: Colors.white),
+//                            ),
+//                            elevation: 10.0,
+//
+//
+//                          ),
+//                        ]))
+//                    ),
+
                   ],
                 ),
               ),
             ),
           ),
         )
-    );
+        ));
 
   }
 }

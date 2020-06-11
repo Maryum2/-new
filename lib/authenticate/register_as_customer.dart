@@ -8,6 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+
+void main() {
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: RegisterAsCustomer()));
+}
+
 class RegisterAsCustomer extends StatefulWidget {
   final Function toggleView1;
   RegisterAsCustomer({this.toggleView1});

@@ -12,6 +12,11 @@ import 'package:provider/provider.dart';
 
 import 'ViewProfile.dart';
 
+void main() {
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Portfolio()));
+}
+
+
 class Portfolio extends StatefulWidget {
   @override
   _PortfolioState createState() => _PortfolioState();
