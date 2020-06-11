@@ -68,10 +68,10 @@ class _SignInState extends State<SignIn> {
             icon: Icon(Icons.arrow_back),
           ),
         ),
-        body:SingleChildScrollView(
+        body:
 
 
-        child: Container(
+        Container(
           decoration: new BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover, image: AssetImage('assets/backgorund3.jpg')),
@@ -278,7 +278,7 @@ class _SignInState extends State<SignIn> {
             ),
           ),
         )
-        ));
+        );
 
   }
 }
