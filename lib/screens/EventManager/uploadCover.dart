@@ -8,6 +8,12 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+
+
+void main() {
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: UploadCoverPage()));
+}
+
 class UploadCoverPage extends StatefulWidget {
   @override
   _UploadCoverPageState createState() => _UploadCoverPageState();

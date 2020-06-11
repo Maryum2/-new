@@ -26,6 +26,8 @@ dependencies:
   fluttertoast: ^4.0.1
   image_picker: ^0.6.4
   shimmer: ^1.1.1
+  flutter_launcher_icons: ^0.7.5
+  flutter_launcher_name: ^0.0.1
 
   cached_network_image: ^2.2.0
   firebase_storage:
@@ -42,7 +44,15 @@ dependencies:
   firebase_database:
   web_socket_channel: ^1.1.0
 
+flutter_icons:
+  image_path: "assets/appIcon.jpg"
+  android: true
+  ios: true
 
+
+
+flutter_launcher_name:
+  name: "Penta Events"
 dev_dependencies:
   flutter_test:
     sdk: flutter

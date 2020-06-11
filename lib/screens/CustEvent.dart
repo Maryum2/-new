@@ -1,6 +1,7 @@
 import 'package:ajeeb/authenticate/authenticateEventManager.dart';
 import 'package:ajeeb/models/eventManager.dart';
 import 'package:ajeeb/models/user.dart';
+import 'package:ajeeb/screens/welcome.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ajeeb/authenticate/signIn.dart';
@@ -28,6 +29,14 @@ class CustEvent extends StatelessWidget {
             resizeToAvoidBottomPadding: false,
             appBar: AppBar(
               title: Text("LogIn"),
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return MyWelcome();
+                  }));
+                },
+                icon: Icon(Icons.arrow_back),
+              ),
               backgroundColor: Colors.teal,
             ),
             body: Container(
