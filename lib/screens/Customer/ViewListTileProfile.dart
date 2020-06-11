@@ -16,6 +16,43 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   DocumentSnapshot document;
+
+  List<Widget> _buildGridTiles(List portfolio) {
+
+    List<Container> containers = new List<Container>.generate(portfolio.length,
+            (int index) {
+          return new Container(
+            child: GestureDetector(
+              child: Image(
+                image: NetworkImage(portfolio[index],),
+                fit: BoxFit.fill,
+              ),
+              onTap: (){
+                _showImage(context,portfolio[index]);
+              },
+            ),
+          );
+        });
+    return containers;
+  }
+
+  Widget _showImage(BuildContext context,String image){
+    return Scaffold(
+      appBar: new AppBar(
+        title: new Text('Upload Image'),
+        centerTitle: true,
+        backgroundColor: Colors.teal[400],
+        elevation: 0.0,
+      ),
+      body: Container(
+        child: Image(
+          image: NetworkImage(image),
+          fit: BoxFit.fill,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -30,177 +67,327 @@ class _ProfilePageState extends State<ProfilePage> {
           decoration: new BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('assets/background3.jpg')),
+                image: AssetImage('assets/backgorund3.jpg')),
           ),
 
           child:new ListView(
             children: <Widget>[
-          new Column(
-          children: <Widget>[
-
-          Stack(
-          children: <Widget>[
-            Row(
+              new Column(
               children: <Widget>[
-                Expanded(
-                    child: Container(
-                      height: 230.0,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image:
-                          new CachedNetworkImageProvider(
-                            widget.document.data['Event_Cover'],
-                          ),),
-                      ),
-                    )
-                )
-              ],
-            ),
-            Positioned(
-              top: 130.0,
-              child: Container(
-                height: 95.0,
-                width: 95.0,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image:
-                      new CachedNetworkImageProvider(
-                        widget.document.data['Event_Logo'],
-                      ),),
-                    border:
-                    Border.all(color: Colors.white, width: 3.0)),
-              ),
-            ),
-          ],
-        ),
 
-            Container(
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(widget.document.data['Event_orgName'],
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 28.0))
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Column(
+                Stack(
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Icon(Icons.location_on),
-                      SizedBox(
-                        width: 5.0,
-                      ),
-                      Text(
-                        widget.document.data['Event_address'],
-                        style: TextStyle(fontSize: 18.0),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Icon(Icons.phone),
-                      SizedBox(
-                        width: 5.0,
-                      ),
-                      Text(
-                        widget.document.data['Event_phone'],
-                        style: TextStyle(fontSize: 18.0),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Icon(Icons.mail),
-                      SizedBox(
-                        width: 5.0,
-                      ),
-                      Text(
-                        widget.document.data['Event_email'],
-                        style: TextStyle(fontSize: 18.0),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Icon(Icons.access_time),
-                      SizedBox(
-                        width: 5.0,
-                      ),
-                      Text(
-                        '11:00 AM to 9:00PM',
-                        style: TextStyle(fontSize: 18.0),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Icon(Icons.location_city),
-                      SizedBox(
-                        width: 5.0,
-                      ),
-                      Text(
-                        widget.document.data['Event_serving_areas'],
-                        style: TextStyle(fontSize: 18.0),
+                      Expanded(
+                          child: Container(
+                            height: 230.0,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image:
+                                new CachedNetworkImageProvider(
+                                  widget.document.data['Event_Cover'],
+                                ),),
+                            ),
+                          )
                       )
                     ],
                   ),
+                  Positioned(
+                    top: 130.0,
+                    child: Container(
+                      height: 95.0,
+                      width: 95.0,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image:
+                            new CachedNetworkImageProvider(
+                              widget.document.data['Event_Logo'],
+                            ),),
+                          border:
+                          Border.all(color: Colors.white, width: 3.0)),
+                    ),
+                  ),
                 ],
               ),
-            ),
+
+                  Container(
+                    height: 60,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(widget.document.data['Event_orgName'],
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 25.0,color: Colors.teal))
+                      ],
+                    ),
+                  ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 10.0),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(Icons.location_on,
+                            size: 20.0,),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(widget.document.data['Event_address'],
+                            style: TextStyle(fontSize: 16.0),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 10.0),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(Icons.phone,size: 20.0,),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(widget.document.data['Event_phone'],
+                            style: TextStyle(fontSize: 16.0),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 10.0),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(Icons.mail,size: 20.0,),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(widget.document.data['Event_email'],
+                            style: TextStyle(fontSize: 16.0),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 10.0),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(Icons.access_time,size: 20.0,),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text('Timings',
+                            style: TextStyle(fontSize: 16.0),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 10.0),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(Icons.location_city,size: 20.0,),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(widget.document.data['Event_serving_areas'],
+                            style: TextStyle(fontSize: 16.0),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 12.0,
+                  child: Divider(
+                    color: Colors.grey,
+                  ),
+                ),
+                Container(
+                    padding: EdgeInsets.all(7.0),
+                    alignment: Alignment.topLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                            margin: EdgeInsets.all(1.0),
+                            alignment: Alignment.topLeft,
+                            child: Text("Description",
+                                style: TextStyle(
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                ))),
+
+                        Container(
+                            margin: EdgeInsets.all(1.0),
+                            alignment: Alignment.topLeft,
+                            child:widget.document.data['Description']==null?
+                            Text('No Description',
+                              style: TextStyle(
+                                  fontSize: 17.0,
+                                  fontStyle: FontStyle.italic
+                              ),
+                            )
+                                :Text(widget.document.data['Description'],
+                              style: TextStyle(
+                                fontSize: 16.0,
+
+                              ),
+                            )
+                        ),
+                      ],
+                    )
+                ),
+                Container(
+                  height: 12.0,
+                  child: Divider(
+                    color: Colors.grey,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(7.0),
+                  //alignment: Alignment.topLeft,
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            "Porfolio",
+                            style: TextStyle(
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(1.0),
+                        alignment: Alignment.topLeft,
+                        child: widget.document.data['Event_portfolio'].length==0? Text(
+                          "No Portfolio Yet! ",
+                          style: TextStyle(
+                              fontSize: 17.0,
+                              fontStyle: FontStyle.italic
+                            //fontWeight: FontWeight.bold
+                          ),
+                        ) :     Center(
+                          child: Container(
+                            //height: 300.0,
+                            child: new GridView.extent(
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              maxCrossAxisExtent: 150.0,
+                              mainAxisSpacing: 5.0,
+                              crossAxisSpacing: 5.0,
+                              padding: const EdgeInsets.all(5.0),
+                              children: _buildGridTiles(widget.document.data['Event_portfolio']),//Where is this function ?
+                            ),
+                          ),
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 15.0,
+                  child: Divider(
+                    color: Colors.grey,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(7.0),
+
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Customers",
+                          style: TextStyle(fontSize: 25.0,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(1.0),
+                        alignment: Alignment.topLeft,
+                        child: widget.document.data['Event_customers'].length==0?
+                        Text("No Customers Yet!",
+                          style: TextStyle(
+                              fontSize: 17.0,
+                              fontStyle: FontStyle.italic
+                            //fontWeight: FontWeight.bold
+                          ),
+                        ):Container(
+                          child: new ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount:widget.document.data['Event_customers'].length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return new Column(
+                                children: <Widget>[
+                                  Row(
+                                    //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      SizedBox(width: 5.0,),
+                                      Icon(Icons.arrow_right),
+                                      Text(widget.document.data['Event_customers'][index],
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          //fontWeight: FontWeight.bold
+                                        ),),
+                                    ],
+                                  ),
+
+                                ],
+                              );
+                            },
+                          ),
+                        ),
+                      )
 
 
-      ],)
+                    ],
+                  ),
+                ),
+
+
+
+
+
+          ],)
 ]
           )
           )

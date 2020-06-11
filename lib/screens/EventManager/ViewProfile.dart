@@ -132,12 +132,11 @@ class _MyEvents extends State<MyEvents> {
                     children: <Widget>[
                       new UserAccountsDrawerHeader(
                         decoration: BoxDecoration(color: Colors.teal),
-                        accountName: new Text('John doe'),
-                        accountEmail: new Text('eventpalace@gmail.com'),
+                        accountName: new Text(managerData.orgName),
+                        accountEmail: new Text(managerData.email),
                         currentAccountPicture: new GestureDetector(
                           child: new CircleAvatar(
-                            backgroundImage: AssetImage(
-                                'assets/eventmanager.jpg'),
+                            backgroundImage:managerData.logo=='logo'?AssetImage('assets/logo1.jpg') :NetworkImage(managerData.logo),
                           ),
                         ),
                       ),
@@ -448,7 +447,7 @@ class _MyEvents extends State<MyEvents> {
                                         icon: Icon(Icons.edit),
                                         color: Colors.black,
                                         onPressed: () {
-                                          _Description(context);
+                                          _Description(context,managerData.description);
                                           },
                                       )
                                     ],
@@ -613,18 +612,11 @@ class _MyEvents extends State<MyEvents> {
   }
 
 
-  Future<void> _Description(BuildContext context){
-
+  Future<void> _Description(BuildContext context,String description){
     return showDialog(
         context: context,
         builder: (BuildContext context){
-          final manager = Provider.of<EventManager>(context);
-          return StreamBuilder<EventManager>(
-            stream: EventManager(uid: manager.uid).managerdata,
-            builder: (context, snapshot) {
-              if(snapshot.hasData){
-                EventManager managerData=snapshot.data;
-                return AlertDialog(
+          return AlertDialog(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0))
                   ),
@@ -643,9 +635,7 @@ class _MyEvents extends State<MyEvents> {
                       child: ListBody(
                         children: <Widget>[
                           TextFormField(
-                            initialValue: managerData.description,
-                            //controller: _descriptionController,
-                            //focusNode: _descriptionFocusNode,
+                            initialValue: description,
                             autofocus: false,
                             maxLines: 8 ,
                             decoration: new InputDecoration(
@@ -696,7 +686,7 @@ class _MyEvents extends State<MyEvents> {
                               color: Colors.teal,
                               onPressed: ()async {
                                 if(_formKey.currentState.validate()){
-                                   await UploadDescription(_description ?? managerData.description);
+                                   await UploadDescription(_description ?? description);
                                     Navigator.of(context).pop();
                                 }
 
@@ -707,12 +697,8 @@ class _MyEvents extends State<MyEvents> {
                     ),
                   ),
                 );
-              }else{
-                return Loading();
-              }
 
-            }
-          );
+
         }
     );
 

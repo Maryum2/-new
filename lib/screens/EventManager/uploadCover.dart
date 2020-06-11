@@ -17,6 +17,7 @@ class UploadCoverPage extends StatefulWidget {
 class _UploadCoverPageState extends State<UploadCoverPage> {
   File sampleImage;
   String ImageUrl;
+  bool loading = false;
 
 
   final formkey= new GlobalKey<FormState>();
@@ -127,7 +128,7 @@ class _UploadCoverPageState extends State<UploadCoverPage> {
 
   @override
   Widget build(BuildContext context) {
-          return new Scaffold(
+          return loading ? Loading() : new Scaffold(
             appBar: new AppBar(
               title: new Text('Upload Image'),
               centerTitle: true,
@@ -135,51 +136,53 @@ class _UploadCoverPageState extends State<UploadCoverPage> {
               elevation: 0.0,
             ),
             body:
-            Container(
-              decoration: new BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/backgorund3.jpg')),
-              ),
-              child: Column(
-                children: <Widget>[
+            SingleChildScrollView(
+              child: Container(
+                decoration: new BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage('assets/backgorund3.jpg')),
+                ),
+                child: Column(
+                  children: <Widget>[
 
-                  sampleImage == null ?
-                  Column(
-                    children: <Widget>[
-                      SizedBox(height: 300,),
-                      new Center(
-                        child: Text('Select an image'),
-                      ),
-                      SizedBox(height: 265,),
-                      RaisedButton(
-                        //color: Colors.teal[400],
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(15.0),
-                            side: BorderSide(
-                              color: Colors.teal, //Color of the border
-                              style: BorderStyle.solid, //Style of the border
-                              width: 1.0, //width of the border
+                    sampleImage == null ?
+                    Column(
+                      children: <Widget>[
+                        SizedBox(height: 300,),
+                        new Center(
+                          child: Text('Select an image'),
+                        ),
+                        SizedBox(height: 265,),
+                        RaisedButton(
+                          //color: Colors.teal[400],
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(15.0),
+                              side: BorderSide(
+                                color: Colors.teal, //Color of the border
+                                style: BorderStyle.solid, //Style of the border
+                                width: 1.0, //width of the border
+                              ),
                             ),
-                          ),
-                          child: Text(
-                            'Select',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                color: Colors.white),
-                          ),
-                          elevation: 20.0,
-                          //splashColor: Colors.black12,
-                          color: Colors.teal,
-                          onPressed: () {
-                            _showDialog1(context);
-                          }),
+                            child: Text(
+                              'Select',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                  color: Colors.white),
+                            ),
+                            elevation: 20.0,
+                            //splashColor: Colors.black12,
+                            color: Colors.teal,
+                            onPressed: () {
+                              _showDialog1(context);
+                            }),
 
-                    ],
-                  )
-                      : enableUpload()
-                ],
+                      ],
+                    )
+                        : enableUpload()
+                  ],
+                ),
               ),
             ),
           );
@@ -226,6 +229,7 @@ class _UploadCoverPageState extends State<UploadCoverPage> {
                             //splashColor: Colors.black12,
                             color: Colors.teal,
                             onPressed: ()async {
+                              setState(() => loading = true);
                               uploadStatusImage();
                             })
 

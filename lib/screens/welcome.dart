@@ -87,7 +87,7 @@ class _MyWelcomeState extends State<MyWelcome> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
-                          height: 520.0,
+                          height: 550.0,
 
                           //width: 400.0,
                           decoration: BoxDecoration(

@@ -20,10 +20,7 @@ class Portfolio extends StatefulWidget {
 class _PortfolioState extends State<Portfolio> {
   File sampleImage;
   String ImageUrl;
-
-
-
-
+  bool loading = false;
   final formkey= new GlobalKey<FormState>();
 
 
@@ -67,32 +64,6 @@ class _PortfolioState extends State<Portfolio> {
     print('porfolio length:$length');
   }
 
-//  getData() async {
-//    final FirebaseAuth _auth = FirebaseAuth.instance;
-//    FirebaseUser user = await _auth.currentUser();
-//    return await Firestore.instance.collection("Event_manager").document(user.uid).collection('Portfolio').getDocuments();
-//  }
-//  Future  saveCoverToDatabase(String ImgUrl)async{
-//    final FirebaseAuth _auth = FirebaseAuth.instance;
-//    FirebaseUser user = await _auth.currentUser();
-//    Firestore.instance.collection("Event_manager").document(user.uid).collection('Portfolio').getDocuments().then((val) {
-//      if(val.documents.length== 0){
-//        Firestore.instance.collection("Event_manager").document(user.uid).collection('Portfolio').document('Pictures').setData({'photo1':ImgUrl},merge: true);
-//      }
-//      else{
-//        Firestore.instance.collection("Event_manager").document(user.uid).collection('Portfolio').document('Pictures').updateData({'photo${val.documents.length+1}':ImgUrl});
-//      }
-//    });
-//    getData().then((val){
-//      if(val.documents.length>0){
-//        Firestore.instance.collection("Event_manager").document(user.uid).collection('Portfolio').document('Pictures').setData({'photo${(val.documents.length)+1}':ImgUrl},);
-//        print('number$val.documents.length');
-//      }
-//      else{
-//        Firestore.instance.collection("Event_manager").document(user.uid).collection('Portfolio').document('Pictures').updateData({'photo1':ImgUrl});
-//      }
-//    });
- // }
 
   Future uploadStatusImage() async {
 
@@ -154,7 +125,7 @@ class _PortfolioState extends State<Portfolio> {
 
   @override
   Widget build(BuildContext context) {
-    return  new Scaffold(
+    return loading ? Loading() : new Scaffold(
       appBar: new AppBar(
         title: new Text('Upload Image'),
         centerTitle: true,
@@ -251,6 +222,7 @@ class _PortfolioState extends State<Portfolio> {
                         //splashColor: Colors.black12,
                         color: Colors.teal,
                         onPressed: ()async {
+                          setState(() => loading = true);
                           uploadStatusImage();
                         })
 

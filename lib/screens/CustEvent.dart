@@ -41,7 +41,7 @@ class CustEvent extends StatelessWidget {
                         children: <Widget>[
                           Container(
                             margin:
-                            EdgeInsets.only(top: 200.0, left: 25.0, right: 25.0,),
+                            EdgeInsets.only(top: 240.0, left: 25.0, right: 25.0,),
                             // alignment:Alignment.bottomCenter,
                             // margin:  EdgeInsets.all(4.0),
                             height: 55.0,
