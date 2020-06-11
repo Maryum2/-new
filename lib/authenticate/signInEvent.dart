@@ -15,9 +15,9 @@ import 'package:email_validator/email_validator.dart';
 
 
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: SignInEvent()));
-}
+//void main() {
+//  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: SignInEvent()));
+//}
 
 
 class SignInEvent extends StatefulWidget {
@@ -45,7 +45,10 @@ class _SignInEventState extends State<SignInEvent> {
   Widget build(BuildContext context) {
     return loading
         ? Loading()
-        : Scaffold(
+
+        : MaterialApp(
+        debugShowCheckedModeBanner: false,
+    home: Scaffold(
         resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -272,7 +275,7 @@ class _SignInEventState extends State<SignInEvent> {
             ),
           ),
         )
-        );
+        ));
 
   }
 }

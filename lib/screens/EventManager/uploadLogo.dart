@@ -11,9 +11,9 @@ import 'package:image_picker/image_picker.dart';
 
 
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: UploadLogoPage()));
-}
+//void main() {
+//  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: UploadLogoPage()));
+//}
 
 
 class UploadLogoPage extends StatefulWidget {
@@ -131,7 +131,10 @@ class _UploadLogoPageState extends State<UploadLogoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return loading ? Loading() : new Scaffold(
+    return loading ? Loading()
+        : new  MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
       appBar: new AppBar(
         title: new Text('Upload Logo'),
         centerTitle: true,
@@ -190,7 +193,7 @@ class _UploadLogoPageState extends State<UploadLogoPage> {
           ),
         ),
       ),
-    );
+    ));
   }
 
   Widget enableUpload(){

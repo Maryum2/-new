@@ -10,13 +10,13 @@ import 'package:ajeeb/services/auth.dart';
 import 'package:ajeeb/screens/EventManager/Nearest.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'AppBar Scaffold',
-    theme: ThemeData(
-      primarySwatch: Colors.teal,
-    ),
-    home: HomePage()));
+//void main() => runApp(MaterialApp(
+//    debugShowCheckedModeBanner: false,
+//    title: 'AppBar Scaffold',
+//    theme: ThemeData(
+//      primarySwatch: Colors.teal,
+//    ),
+//    home: HomePage()));
 
 class HomePage extends StatefulWidget {
   @override
@@ -51,7 +51,9 @@ class _HomePageState extends State<HomePage> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             EventManager managerData = snapshot.data;
-            return Scaffold(
+            return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                home: Scaffold(
                 appBar: AppBar(
                   backgroundColor: Colors.teal,
                   actions: <Widget>[
@@ -314,7 +316,7 @@ class _HomePageState extends State<HomePage> {
 
 
                       ])
-                    ])));
+                    ]))));
           }
           else {
             return Loading();

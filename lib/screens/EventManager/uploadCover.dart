@@ -9,10 +9,10 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: UploadCoverPage()));
-}
+//
+//void main() {
+//  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: UploadCoverPage()));
+//}
 
 class UploadCoverPage extends StatefulWidget {
   @override
@@ -134,7 +134,10 @@ class _UploadCoverPageState extends State<UploadCoverPage> {
 
   @override
   Widget build(BuildContext context) {
-          return loading ? Loading() : new Scaffold(
+          return loading ? Loading()
+              : new MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home:Scaffold(
             appBar: new AppBar(
               title: new Text('Upload Image'),
               centerTitle: true,
@@ -191,7 +194,7 @@ class _UploadCoverPageState extends State<UploadCoverPage> {
                 ),
               ),
             ),
-          );
+          ));
 
 
 

@@ -14,9 +14,9 @@ import 'EventManager/main2.dart';
 
 
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: CustEvent()));
-}
+//void main() {
+//  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: CustEvent()));
+//}
 
 class CustEvent extends StatelessWidget {
 

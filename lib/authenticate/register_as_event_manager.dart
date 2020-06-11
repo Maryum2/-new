@@ -17,9 +17,14 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: RegisterAsEventManager()));
-}
+//void main() => runApp(MaterialApp(
+//    debugShowCheckedModeBanner: false,
+//    title: 'AppBar Scaffold',
+//    theme: ThemeData(
+//      primarySwatch: Colors.teal,
+//    ),
+//    home: RegisterAsEventManager()));
+
 
 class RegisterAsEventManager extends StatefulWidget {
   final Function toggleView;
@@ -100,7 +105,10 @@ class _RegisterAsEventManagerState extends State<RegisterAsEventManager> {
         : StreamBuilder<EventManager>(
         stream: null,
         builder: (context, snapshot) {
-          return Scaffold(
+          return  MaterialApp(
+              debugShowCheckedModeBanner: false,
+
+            home:Scaffold(
               backgroundColor: Colors.white,
               resizeToAvoidBottomPadding: false,
               appBar: AppBar(
@@ -636,7 +644,7 @@ class _RegisterAsEventManagerState extends State<RegisterAsEventManager> {
                   ),
                 ),
               )
-          );
+          ));
         }
     );
 

@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: ProfilePage()));
-}
+//void main() {
+//  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: ProfilePage()));
+//}
 class ProfilePage extends StatefulWidget {
 
   final DocumentSnapshot document;
@@ -58,7 +58,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Scaffold(
+    return new MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
       appBar: new AppBar(
         title: new Text('Penta Events'),
         backgroundColor: Colors.teal,
@@ -393,6 +395,6 @@ class _ProfilePageState extends State<ProfilePage> {
 ]
           )
           )
-    );
+    ));
   }
 }

@@ -12,12 +12,12 @@ import 'package:flutter/material.dart';
 
 
 
-void main() {
-
-  runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SignIn()));
-}
+//void main() {
+//
+//  runApp(MaterialApp(
+//      debugShowCheckedModeBanner: false,
+//      home: SignIn()));
+//}
 
 
 
@@ -46,7 +46,9 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return loading
         ? Loading()
-        : Scaffold(
+        :  MaterialApp(
+        debugShowCheckedModeBanner: false,
+    home: Scaffold(
         resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -278,7 +280,7 @@ class _SignInState extends State<SignIn> {
             ),
           ),
         )
-        );
+        ));
 
   }
 }

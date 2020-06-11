@@ -13,13 +13,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 
 
-void main() => runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'AppBar Scaffold',
-    theme: ThemeData(
-      primarySwatch: Colors.teal,
-    ),
-    home: GoToNearest()));
+//void main() => runApp(MaterialApp(
+//    debugShowCheckedModeBanner: false,
+//    title: 'AppBar Scaffold',
+//    theme: ThemeData(
+//      primarySwatch: Colors.teal,
+//    ),
+//    home: GoToNearest()));
 
 
 class GoToNearest extends StatefulWidget{
@@ -48,7 +48,9 @@ class _GoToNearestState extends State<GoToNearest> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
+    return  MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.teal,
           actions: <Widget>[
@@ -262,6 +264,6 @@ class _GoToNearestState extends State<GoToNearest> {
                   )))
         ])
 
-    );
+    ));
   }
 }

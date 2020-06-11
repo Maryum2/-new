@@ -31,14 +31,14 @@ import 'Category.dart';
 
 
 
-void main() {
-  FlutterError.onError = (FlutterErrorDetails details) {
-    FlutterError.dumpErrorToConsole(details);
-    if (kReleaseMode)
-      exit(1);
-  };
-
-  runApp(new View());}
+//void main() {
+//  FlutterError.onError = (FlutterErrorDetails details) {
+//    FlutterError.dumpErrorToConsole(details);
+//    if (kReleaseMode)
+//      exit(1);
+//  };
+//
+//  runApp(new View());}
 
 class View extends StatelessWidget {
   // This widget is the root of your application.

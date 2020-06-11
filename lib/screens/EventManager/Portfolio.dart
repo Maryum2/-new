@@ -12,9 +12,9 @@ import 'package:provider/provider.dart';
 
 import 'ViewProfile.dart';
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Portfolio()));
-}
+//void main() {
+//  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Portfolio()));
+//}
 
 
 class Portfolio extends StatefulWidget {
@@ -130,7 +130,10 @@ class _PortfolioState extends State<Portfolio> {
 
   @override
   Widget build(BuildContext context) {
-    return loading ? Loading() : new Scaffold(
+    return loading ? Loading()
+        : new MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
       appBar: new AppBar(
         title: new Text('Upload Image'),
         centerTitle: true,
@@ -187,7 +190,7 @@ class _PortfolioState extends State<Portfolio> {
           ),
         ),
       ),
-    );
+    ));
 
   }
 

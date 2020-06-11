@@ -8,13 +8,13 @@ import 'package:ajeeb/services/auth.dart';
 import 'package:ajeeb/screens/EventManager/Nearest.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'AppBar Scaffold',
-    theme: ThemeData(
-      primarySwatch: Colors.teal,
-    ),
-    home: HomeCust()));
+//void main() => runApp(MaterialApp(
+//    debugShowCheckedModeBanner: false,
+//    title: 'AppBar Scaffold',
+//    theme: ThemeData(
+//      primarySwatch: Colors.teal,
+//    ),
+//    home: HomeCust()));
 
 class HomeCust extends StatefulWidget {
   @override
@@ -43,7 +43,9 @@ class _HomeCustState extends State<HomeCust> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
 //        backgroundColor: Colors.grey[200],
       //resizeToAvoidBottomPadding: false,
         appBar: AppBar(
@@ -301,6 +303,6 @@ class _HomeCustState extends State<HomeCust> {
 
 
               ])
-            ])));
+            ]))));
   }
 }

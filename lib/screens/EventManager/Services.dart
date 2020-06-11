@@ -6,9 +6,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Services()));
-}
+//void main() {
+//  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Services()));
+//}
 
 
 class Services extends StatefulWidget {
@@ -52,6 +52,8 @@ class _ServicesState extends State<Services> {
 
 
     return MaterialApp(
+
+    debugShowCheckedModeBanner: false,
       title: title,
       home: Scaffold(
         appBar: AppBar(

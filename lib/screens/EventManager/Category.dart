@@ -9,14 +9,16 @@ import 'package:provider/provider.dart';
 
 import 'ViewProfile.dart';
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyCategory()));
-}
+//void main() {
+//  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyCategory()));
+//}
 
 class MyCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+
+    debugShowCheckedModeBanner: false,
       title: 'Penta Events',
       theme: new ThemeData(
       primarySwatch: Colors.teal,

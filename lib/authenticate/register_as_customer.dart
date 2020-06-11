@@ -9,9 +9,17 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: RegisterAsCustomer()));
-}
+//void main() => runApp(MaterialApp(
+//    debugShowCheckedModeBanner: false,
+//    title: 'AppBar Scaffold',
+//    theme: ThemeData(
+//      primarySwatch: Colors.teal,
+//    ),
+//    home: RegisterAsCustomer()));
+
+
+
+
 
 class RegisterAsCustomer extends StatefulWidget {
   final Function toggleView1;
@@ -69,7 +77,9 @@ class _RegisterAsCustomerState extends State<RegisterAsCustomer> {
   Widget build(BuildContext context) {
     return loading
         ? Loading()
-        : Scaffold(
+        :  MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
         backgroundColor: Colors.white,
         resizeToAvoidBottomPadding: false,
         appBar: AppBar(
@@ -502,7 +512,7 @@ class _RegisterAsCustomerState extends State<RegisterAsCustomer> {
             ),
           ),
         )
-    );
+    ));
 
   }
 }
