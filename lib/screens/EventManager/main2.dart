@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ajeeb/models/eventManager.dart';
 
+//import 'file:///C:/Users/kinza/Desktop/-new Final/-new/lib/screens/Customer/main.dart';
 void main() => runApp(MyApp1());
 
 class MyApp1 extends StatelessWidget {
